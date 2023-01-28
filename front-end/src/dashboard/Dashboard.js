@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { listReservations } from "../utils/api";
+import { listReservations} from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
+import Reservation from "./Reservation";
+import DateNav from "./DateNav";
 
 /**
  * Defines the dashboard page.
@@ -23,14 +25,30 @@ function Dashboard({ date }) {
     return () => abortController.abort();
   }
 
+  const reservationList = reservations.map((reservation) => (
+    <Reservation
+      loadDashboard={loadDashboard}
+      key={reservation.reservation_id}
+      reservation={reservation}
+    />
+  ));
+
   return (
     <main>
-      <h1>Dashboard</h1>
-      <div className="d-md-flex mb-3">
-        <h4 className="mb-0">Reservations for date</h4>
+      <div className="text-center mt-3 mb-5">
+        <h1>Dashboard</h1>
+        <DateNav date={date} />
       </div>
       <ErrorAlert error={reservationsError} />
-      {JSON.stringify(reservations)}
+      <div className="container">
+        <div className="row">
+          <div className="col col-sm">
+            <h4 className="mb-4 text-center">Reservations for: {date}</h4>
+            
+            {reservationList}
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
