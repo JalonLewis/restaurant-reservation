@@ -1,0 +1,1 @@
+I got a new mac today and am making sure I can push from terminal.
