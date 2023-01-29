@@ -79,6 +79,21 @@ export async function createReservation(data, signal) {
   );
 }
 
+export async function readReservation(id, signal) {
+  const url = new URL(`${API_BASE_URL}/reservations/${id}`);
+  return await fetchJson(url, { headers, signal }, []);
+}
+
+export async function updateReservation(data, reservation_id, signal) {
+  const url = new URL(`${API_BASE_URL}/reservations/${reservation_id}`);
+
+  return await fetchJson(
+    url,
+    { headers, signal, method: "PUT", body: JSON.stringify({ data }) },
+    []
+  );
+}
+
 export async function cancelReservation(reservation_id, signal) {
   const url = new URL(`${API_BASE_URL}/reservations/${reservation_id}/status`);
   return await fetchJson(
@@ -95,4 +110,77 @@ export async function cancelReservation(reservation_id, signal) {
     },
     []
   );
+}
+
+export async function createTable(data, signal) {
+  const url = new URL(`${API_BASE_URL}/tables`);
+ 
+
+  return await fetchJson(
+    url,
+    { headers, signal, method: "POST", body: JSON.stringify({ data }) },
+    []
+  );
+}
+
+export async function listTables(signal) {
+  const url = new URL(`${API_BASE_URL}/tables`);
+  return await fetchJson(url, { headers, signal }, []);
+}
+
+
+export async function unseatTable(table_id, signal) {
+  const url = new URL(`${API_BASE_URL}/tables/${table_id}/seat`);
+
+  return await fetchJson(
+    url,
+    {
+      headers,
+      signal,
+      method: "DELETE",
+      body: JSON.stringify({ data: { table_id } }),
+    },
+    []
+  );
+}
+
+export async function updateTable(reservation_id, table_id, signal) {
+  const tableUrl = new URL(`${API_BASE_URL}/tables/${table_id}/seat`);
+  const reservationUrl = new URL(
+    `${API_BASE_URL}/reservations/${reservation_id}/status`
+  );
+
+  const promises = [
+    fetchJson(
+      tableUrl,
+      {
+        headers,
+        signal,
+        method: "PUT",
+        body: JSON.stringify({
+          data: {
+            reservation_id,
+          },
+        }),
+      },
+      []
+    ),
+    fetchJson(
+      reservationUrl,
+      {
+        headers,
+        signal,
+        method: "PUT",
+        body: JSON.stringify({
+          data: {
+            status: "seated",
+          },
+        }),
+      },
+      []
+    ),
+  ];
+
+  return await Promise.all(promises);
+
 }
