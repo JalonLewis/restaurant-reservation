@@ -5,13 +5,13 @@ import React from "react";
  * @param error
  *  an instance of an object with `.message` property as a string, typically an Error instance.
  * @returns {JSX.Element}
- *  a bootstrap danger alert that contains the message string.
+ *  a danger alert that contains the message string.
  */
 
 function ErrorAlert({ error }) {
   return (
     error && (
-      <div className="alert alert-danger m-2">Error: {error.message}</div>
+      <div className="alert alert-danger">Error: {error.message}</div>
     )
   );
 }

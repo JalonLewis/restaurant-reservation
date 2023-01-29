@@ -93,7 +93,7 @@ function NewReservation() {
 
   return (
     <>
-      <div className="text-center mt-3 mb-5">
+      <div>
         <h1>Create New Booking</h1>
       </div>
       {displayErrors}

@@ -110,7 +110,7 @@ function EditReservationForm() {
 
   return (
     <>
-      <div className="text-center mt-3 mb-5">
+      <div>
         <h1>Edit Booking</h1>
       </div>
       {displayErrors}

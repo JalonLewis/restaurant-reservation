@@ -58,24 +58,23 @@ function Search() {
   ));
 
   const content = reservations.length ? (
-    <div className="container mt-3">
-      <div className="row justify-content-center">
-        <div className="col col-8">{reservationList}</div>
+    <div>
+      <div>
+        <div>{reservationList}</div>
       </div>
     </div>
   ) : (
-    <h3 className="text-center mt-4">No reservations found</h3>
+    <h3>No reservations found</h3>
   );
 
   return (
     <>
-      <div className="text-center mt-3 mb-5">
+      <div>
         <h1>Find Booking by Phone Number</h1>
       </div>
       {formErrors.length ? displayErrors : null}
       {reservationsError.length ? displayResErrors : null}
       <form
-        className="form-inline d-flex justify-content-center"
         onSubmit={handleSubmit}
       >
         <input
@@ -85,10 +84,9 @@ function Search() {
           placeholder="Enter a customer's phone number"
           onChange={handleChange}
           value={formData.mobile_number}
-          className="form-control shadow-sm"
           name="mobile_number"
         ></input>
-        <button className="btn btn-primary mx-2" type="submit">
+        <button type="submit">
           Find
         </button>
       </form>
