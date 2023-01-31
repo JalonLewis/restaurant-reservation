@@ -1,8 +1,6 @@
 import { unseatTable } from "../utils/api";
 
-
 function Table({ table, loadDashboard }) {
-  
   function clickHandler() {
     if (window.confirm("Is this table ready to seat new guests?")) {
       const abortController = new AbortController();
@@ -13,45 +11,41 @@ function Table({ table, loadDashboard }) {
     }
   }
 
-
   return (
-    <div>
-      <h5>Table Name: {table.table_name}</h5>
-      <div>
-        <div>
-          <div>
-            <h5>
-              Capacity: {table.capacity}
-            </h5>
-            {table.reservation_id ? (
-              <>
-                <div
-                  data-table-id-status={table.table_id}
-                  style={{ cursor: "default" }}
-                >
-                  Occupied
-                </div>
-              </>
-            ) : (
-              <div
-                data-table-id-status={table.table_id}
-                style={{ cursor: "default" }}
-              >
-                Free
-              </div>
-            )}
+    <div className="card my-3">
+      <h6 className="card-header">Table Name: {table.table_name}</h6>
+      <div className="card-body d-flex">
+        <h6 className="col card-title justify-content-center">
+          Capacity: {table.capacity}
+        </h6>
+        {table.reservation_id ? (
+          <>
+            <div
+              className="col btn btn-warning"
+              data-table-id-status={table.table_id}
+              style={{ cursor: "default" }}
+            >
+              Occupied
+            </div>
+          </>
+        ) : (
+          <div
+            className="col btn btn-success"
+            data-table-id-status={table.table_id}
+            style={{ cursor: "default" }}
+          >
+            Free
           </div>
-        </div>
+        )}
       </div>
       {table.reservation_id ? (
         <div
           data-table-id-finish={table.table_id}
           onClick={clickHandler}
           role="button"
+          className="card-footer bg-primary text-decoration-none text-white text-center"
         >
-          <h5>
-            Finish
-          </h5>
+          <h5>Finish</h5>
         </div>
       ) : null}
     </div>

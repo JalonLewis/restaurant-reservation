@@ -52,30 +52,32 @@ function SeatReservation() {
   ));
   return (
     <>
-      <div>
-        <h1>Select A Table</h1>
+      <div className="text-center my-3">
+        <h2>Select A Table</h2>
       </div>
       {formErrors.length ? displayErrors : null}
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="table">
+      <div className="d-flex justify-content-center">
+        <form className="form border border-secondary bg-light border-3 rounded px-2 py-1" onSubmit={handleSubmit}>
+          <label className="form-label" htmlFor="table">
             Table Name:
           </label>
           <select
             required
             onChange={handleChange}
             value={tableId}
+            className="form-control border-dark border-2"
             name="table_id"
           >
             <option value="">-- Choose Table --</option>
             {tableList}
           </select>
-          <button type="submit">
+          <button className="btn btn-primary my-1 mx-5" type="submit">
             Submit
           </button>
           <button
             onClick={history.goBack}
             type="button"
+            className="btn btn-secondary my-1 mx-5"
           >
             Cancel
           </button>

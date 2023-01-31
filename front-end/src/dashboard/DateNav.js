@@ -3,9 +3,10 @@ import { previous, next, today } from "../utils/date-time";
 
 function DateNav({ date }) {
   return (
-    <div role="group">
+    <div className="btn-group" role="group">
       <Link
         type="button"
+        className="btn btn-outline-secondary shadow-none"
         to={(location) => {
           return `${location.pathname}?date=${previous(date)}`;
         }}
@@ -14,6 +15,7 @@ function DateNav({ date }) {
       </Link>
       <Link
         type="button"
+        className="btn btn-outline-secondary shadow-none"
         to={(location) => {
           return `${location.pathname}?date=${today()}`;
         }}
@@ -22,6 +24,7 @@ function DateNav({ date }) {
       </Link>
       <Link
         type="button"
+        className="btn btn-outline-secondary shadow-none"
         to={(location) => {
           return `${location.pathname}?date=${next(date)}`;
         }}

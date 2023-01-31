@@ -45,21 +45,21 @@ function Dashboard({ date }) {
 
   return (
     <main>
-      <div>
+      <div className="text-center my-4">
         <h1>Dashboard</h1>
         <DateNav date={date} />
       </div>
       <ErrorAlert error={reservationsError} />
       <ErrorAlert error={tablesError} />
-      <div>
-        <div>
-          <div>
-            <h4>Reservations for: {date}</h4>
+      <div className="container">
+        <div className="row">
+          <div className="col col-sm">
+            <h4 className="mb-3 text-center">Reservations for: {date}</h4>
             
             {reservationList}
           </div>
-          <div>
-            <h4>Tables:</h4>
+          <div className="col col-sm">
+            <h4 className="mb-3 text-center">Tables:</h4>
             {tableList}
           </div>
         </div>

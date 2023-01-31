@@ -63,15 +63,15 @@ function NewTable() {
 
   return (
     <>
-      <div>
-        <h1>Create New Table</h1>
-      </div>
+      <h4 className="text-center my-3">
+        Create New Table
+      </h4>
       {formErrors.length ? displayErrors : null}
-      <div>
-        <form noValidate={true} onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="table_name">
-              Table Name:
+      <div className="d-flex justify-content-center">
+        <form className="w-50" noValidate={true} onSubmit={handleSubmit}>
+          <div className="my-3">
+            <label className="form-label" htmlFor="table_name">
+              <h6>Table Name:</h6>
             </label>
             <input
               required
@@ -79,12 +79,13 @@ function NewTable() {
               placeholder="Table Name"
               onChange={handleChange}
               value={formData.table_name}
+              className="form-control"
               name="table_name"
             ></input>
           </div>
-          <div>
-            <label htmlFor="capacity">
-              Capacity:
+          <div className="my-3">
+            <label className="form-label" htmlFor="capacity">
+            <h6>Capacity:</h6>
             </label>
             <input
               required
@@ -93,15 +94,17 @@ function NewTable() {
               min="1"
               onChange={handleChange}
               value={formData.capacity}
+              className="form-control"
               name="capacity"
             ></input>
           </div>
-          <button type="submit">
+          <button className="btn btn-primary mr-2" type="submit">
             Submit
           </button>
           <button
             onClick={history.goBack}
             type="button"
+            className="btn btn-secondary"
           >
             Cancel
           </button>

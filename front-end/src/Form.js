@@ -3,15 +3,16 @@ import { useHistory } from "react-router-dom";
 function Form({ formData, handleChange, handleSubmit }) {
   const history = useHistory();
   return (
-    <div>
-      <form noValidate={true} onSubmit={handleSubmit}>
-        <div>
+    <div className="d-flex justify-content-center">
+      <form className="w-50" noValidate={true} onSubmit={handleSubmit}>
+        <div className="input-group my-3">
           <input
             required
             type="text"
             onChange={handleChange}
             value={formData.first_name}
             placeholder="First Name"
+            className="form-control"
             name="first_name"
           ></input>
           <input
@@ -20,10 +21,11 @@ function Form({ formData, handleChange, handleSubmit }) {
             onChange={handleChange}
             value={formData.last_name}
             placeholder="Last Name"
+            className="form-control"
             name="last_name"
           ></input>
         </div>
-        <div>
+        <div className="my-3">
           <input
             required
             type="tel"
@@ -32,30 +34,33 @@ function Form({ formData, handleChange, handleSubmit }) {
             onChange={handleChange}
             value={formData.mobile_number}
             placeholder="Mobile Number"
+            className="form-control"
             name="mobile_number"
           ></input>
         </div>
-        <div>
+        <div className="my-3">
           <input
             required
             type="date"
             onChange={handleChange}
             value={formData.reservation_date}
             placeholder="Reservation Date"
+            className="form-control"
             name="reservation_date"
           ></input>
         </div>{" "}
-        <div>
+        <div className="my-3">
           <input
             required
             type="time"
             onChange={handleChange}
             value={formData.reservation_time}
             placeholder="Reservation Time"
+            className="form-control"
             name="reservation_time"
           ></input>
         </div>{" "}
-        <div>
+        <div className="my-3">
           <input
             required
             type="number"
@@ -63,15 +68,17 @@ function Form({ formData, handleChange, handleSubmit }) {
             onChange={handleChange}
             value={formData.people}
             placeholder="People"
+            className="form-control"
             name="people"
           ></input>
         </div>
-        <button type="submit">
+        <button className="btn btn-primary mr-2" type="submit">
           Submit
         </button>
         <button
           type="button"
           onClick={history.goBack}
+          className="btn btn-secondary"
         >
           Cancel
         </button>
